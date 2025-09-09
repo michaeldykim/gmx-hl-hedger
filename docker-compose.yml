@@ -1,0 +1,15 @@
+services:
+  hedger:
+    container_name: hedger
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: gmx-hl-hedger:latest
+    env_file:
+      - .env
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
